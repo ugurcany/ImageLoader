@@ -1,4 +1,4 @@
-# ImageLoader
+# ImageLoader
 
 This project contains the implementation of an image loader library (`imageloader` module) and sample app (`app` module) that shows how to use this library.
 
