@@ -106,9 +106,8 @@ class ImageLoaderImpl implements ImageLoader, InternalCallback {
     private void loadBitmap(Bitmap bitmap) {
         ImageView imageView;
         if ((imageView = weakImageView.get()) != null
-                && weakContext.get() != null
-                && bitmap != null) {
-            if (isCircular) {
+                && weakContext.get() != null) {
+            if (isCircular && bitmap != null) {
                 imageView.setImageDrawable(cropToCircle(cropToSquare(bitmap)));
             } else {
                 imageView.setImageBitmap(bitmap);

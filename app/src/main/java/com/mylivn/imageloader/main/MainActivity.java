@@ -19,11 +19,11 @@ public class MainActivity extends AppCompatActivity implements MainView {
     private ActivityMainBinding binding;
 
     private final String[] IMAGE_URLS = {
-            "https://images.pexels.com/photos/1464143/pexels-photo-1464143.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-            "https://images.pexels.com/photos/335394/pexels-photo-335394.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-            "https://images.pexels.com/photos/1416868/pexels-photo-1416868.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-            "https://images.pexels.com/photos/1308751/pexels-photo-1308751.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-            "https://images.pexels.com/photos/314563/pexels-photo-314563.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+            "https://images.pexels.com/photos/1464143/pexels-photo-1464143.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1500&w=2500",
+            "https://images.pexels.com/photos/335394/pexels-photo-335394.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1500&w=2500",
+            "https://images.pexels.com/photos/1416868/pexels-photo-1416868.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1500&w=2500",
+            "https://images.pexels.com/photos/1308751/pexels-photo-1308751.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1500&w=2500",
+            "https://images.pexels.com/photos/314563/pexels-photo-314563.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1500&w=2500",
     };
 
     @State

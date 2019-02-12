@@ -63,9 +63,9 @@ class ImageDownloader extends AsyncTask<String, Integer, Bitmap> {
         try {
             URL url = new URL(imageUrl);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            int lengthOfFile = connection.getContentLength();
-
             stream = connection.getInputStream();
+
+            int lengthOfFile = connection.getContentLength();
 
             final int bufLen = 4 * 0x400;
             byte[] bytes = new byte[bufLen];
