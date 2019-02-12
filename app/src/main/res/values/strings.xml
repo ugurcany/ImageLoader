@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ImageLoader</string>
+    
+    <string name="main_next_button">Next Image</string>
 </resources>
