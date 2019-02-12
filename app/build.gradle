@@ -39,10 +39,6 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel:2.0.0"
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
 
-    //STATE SAVER
-    implementation 'com.evernote:android-state:1.4.1'
-    annotationProcessor 'com.evernote:android-state-processor:1.4.1'
-
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.2-alpha01'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.2-alpha01'

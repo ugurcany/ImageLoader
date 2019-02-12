@@ -19,7 +19,7 @@ class ImageLoaderImpl implements ImageLoader, InternalCallback {
 
     private static final String TAG = "ImageLoader";
 
-    private static WeakReference<Context> weakContext = new WeakReference<>(null);
+    private static WeakReference<Context> weakContext = null;
     private static ImageLoader imageLoader = null;
 
     private ImageDownloader imageDownloadTask;

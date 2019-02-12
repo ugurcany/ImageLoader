@@ -1,12 +1,8 @@
-package com.mylivn.imageloader.main;
+package com.mylivn.imageloader;
 
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.evernote.android.state.State;
-import com.mylivn.imageloader.Callback;
-import com.mylivn.imageloader.ImageLoader;
-import com.mylivn.imageloader.R;
 import com.mylivn.imageloader.databinding.ActivityMainBinding;
 
 import androidx.annotation.NonNull;
@@ -19,19 +15,27 @@ public class MainActivity extends AppCompatActivity implements MainView {
     private ActivityMainBinding binding;
 
     private final String[] IMAGE_URLS = {
-            "https://images.pexels.com/photos/1464143/pexels-photo-1464143.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1500&w=2500",
-            "https://images.pexels.com/photos/335394/pexels-photo-335394.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1500&w=2500",
-            "https://images.pexels.com/photos/1416868/pexels-photo-1416868.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1500&w=2500",
-            "https://images.pexels.com/photos/1308751/pexels-photo-1308751.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1500&w=2500",
-            "https://images.pexels.com/photos/314563/pexels-photo-314563.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=1500&w=2500",
+            "https://images.pexels.com/photos/1464143/pexels-photo-1464143.jpeg" +
+                    "?auto=compress&cs=tinysrgb&dpr=2&h=1500&w=2500",
+            "https://images.pexels.com/photos/335394/pexels-photo-335394.jpeg" +
+                    "?auto=compress&cs=tinysrgb&dpr=2&h=1500&w=2500",
+            "https://images.pexels.com/photos/1416868/pexels-photo-1416868.jpeg" +
+                    "?auto=compress&cs=tinysrgb&dpr=2&h=1500&w=2500",
+            "https://images.pexels.com/photos/1308751/pexels-photo-1308751.jpeg" +
+                    "?auto=compress&cs=tinysrgb&dpr=2&h=1500&w=2500",
+            "https://images.pexels.com/photos/314563/pexels-photo-314563.jpeg" +
+                    "?auto=compress&cs=tinysrgb&dpr=2&h=1500&w=2500",
     };
 
-    @State
-    public int counter = 0;
+    private int counter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (savedInstanceState != null) {
+            counter = savedInstanceState.getInt("counter", 0);
+        }
+
         MainViewModel viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
         viewModel.setView(this);
 
@@ -47,11 +51,11 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
         ImageLoader.of(this)
                 .into(binding.imageView)
-                .isCircular(true) //OPTIONAL
-                .enableCaching(10) //CACHE SIZE IN MB - OPTIONAL
-                .loadingPlaceholder(R.drawable.placeholder_loading) //OPTIONAL
-                .errorPlaceholder(R.drawable.placeholder_error) //OPTIONAL
-                .callback(new Callback() { //OPTIONAL
+                .isCircular(true) // OPTIONAL
+                .enableCaching(10) // CACHE SIZE IN MB - OPTIONAL
+                .loadingPlaceholder(R.drawable.placeholder_loading) // OPTIONAL
+                .errorPlaceholder(R.drawable.placeholder_error) // OPTIONAL
+                .callback(new Callback() { // OPTIONAL
                     @Override
                     public void onProgress(int progress) {
                         binding.progressBar.setProgress(progress);
@@ -62,13 +66,14 @@ public class MainActivity extends AppCompatActivity implements MainView {
                         Toast.makeText(MainActivity.this,
                                 "Error occurred!", Toast.LENGTH_SHORT).show();
                     }
+                    // ...
                 })
                 .load(imageUrl);
     }
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
-        counter--; //TO PREVENT IMAGE CHANGES ON ORIENTATION CHANGES
+        outState.putInt("counter", --counter);
         super.onSaveInstanceState(outState);
     }
 }
