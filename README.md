@@ -2,6 +2,8 @@
 
 This project contains the implementation of an image loader library (`imageloader` module) and sample app (`app` module) that shows how to use this library.
 
+No third-party library is used in this project.
+
 
 
 ### How to use ImageLoader:
@@ -18,4 +20,3 @@ ImageLoader.of(this) // this = a Context instance
     })
     .load(imageUrl);
 ```
-

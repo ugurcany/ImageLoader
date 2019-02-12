@@ -1,4 +1,4 @@
-package com.mylivn.imageloader.main;
+package com.mylivn.imageloader;
 
 import androidx.lifecycle.ViewModel;
 
