@@ -19,12 +19,12 @@ class ImageLoaderImpl implements ImageLoader, InternalCallback {
 
     private static final String TAG = "ImageLoader";
 
-    private static WeakReference<Context> weakContext;
-    private static ImageLoader imageLoader;
+    private static WeakReference<Context> weakContext = new WeakReference<>(null);
+    private static ImageLoader imageLoader = null;
 
     private ImageDownloader imageDownloadTask;
     private Callback callback = null;
-    private WeakReference<ImageView> weakImageView;
+    private WeakReference<ImageView> weakImageView = new WeakReference<>(null);
     private boolean isCircular = false;
     private boolean isCachingEnabled = false;
     private Bitmap bitmapLoadingPlaceholder = null;
@@ -117,7 +117,6 @@ class ImageLoaderImpl implements ImageLoader, InternalCallback {
         if (callback != null) {
             callback.onImageReady(bitmap);
         }
-
         loadBitmap(bitmap);
     }
 
@@ -145,6 +144,8 @@ class ImageLoaderImpl implements ImageLoader, InternalCallback {
             } else {
                 imageView.setImageBitmap(bitmap);
             }
+        } else {
+            Log.e(TAG, "Missing ImageView or Context!");
         }
     }
 
