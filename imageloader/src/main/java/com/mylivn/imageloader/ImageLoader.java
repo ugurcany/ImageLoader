@@ -19,6 +19,8 @@ public interface ImageLoader {
 
     ImageLoader callback(Callback callback);
 
+    ImageLoader enableCaching(int cacheSizeInMB);
+
     void load(String imageUrl);
 
 }

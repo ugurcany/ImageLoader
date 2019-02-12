@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
         ImageLoader.of(this)
                 .into(binding.imageView)
+                .enableCaching(10) //CACHE SIZE IN MB
                 .isCircular(true)
                 .loadingPlaceholder(R.drawable.placeholder_loading)
                 .errorPlaceholder(R.drawable.placeholder_error)

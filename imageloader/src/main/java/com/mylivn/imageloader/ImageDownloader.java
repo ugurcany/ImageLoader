@@ -17,8 +17,11 @@ class ImageDownloader extends AsyncTask<String, Integer, Bitmap> {
 
     private InternalCallback callback;
 
-    ImageDownloader(InternalCallback callback) {
+    private boolean isCachingEnabled;
+
+    ImageDownloader(InternalCallback callback, boolean isCachingEnabled) {
         this.callback = callback;
+        this.isCachingEnabled = isCachingEnabled;
     }
 
     @Override
@@ -63,6 +66,8 @@ class ImageDownloader extends AsyncTask<String, Integer, Bitmap> {
         try {
             URL url = new URL(imageUrl);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setUseCaches(isCachingEnabled);
+
             stream = connection.getInputStream();
 
             int lengthOfFile = connection.getContentLength();
